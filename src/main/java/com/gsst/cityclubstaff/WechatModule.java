@@ -221,7 +221,7 @@ public class WechatModule {
                 msg.title = params.getString("title");                    // 小程序消息title
                 msg.description = params.getString("description");               // 小程序消息desc
                 String thumbData = params.getString("hdImageData");
-                msg.thumbData = thumbData.getBytes();                      // 小程序消息封面图片，小于128k
+                msg.thumbData = Base64.decode(thumbData.getBytes(), Base64.DEFAULT);                    // 小程序消息封面图片，小于128k
 
                 SendMessageToWX.Req req = new SendMessageToWX.Req();
                 req.transaction = buildTransaction("miniProgram");
